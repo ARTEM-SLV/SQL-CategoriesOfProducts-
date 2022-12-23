@@ -1,0 +1,21 @@
+CREATE TABLE Categories
+(
+    id bigint,
+    description VARCHAR(20) 
+) ;
+
+CREATE TABLE Products
+(
+    id bigint,
+    description VARCHAR(20) 
+) ;
+
+CREATE TABLE CategoriesOfProducts
+(
+    id_prod bigint,
+    id_cat bigint 
+) ;
+
+SELECT Products.description as Product, ISNULL(Categories.description, '')  AS Categorie FROM CategoriesOfProducts 
+	full join Products on id_prod = Products.id
+    left outer join Categories on id_cat = Categories.id
